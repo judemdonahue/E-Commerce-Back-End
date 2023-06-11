@@ -8,18 +8,17 @@ Tag.init(
   {
     // define columns
 
-        // Tag
+    id: {
+      type: DataType.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    // id Integer Doesn't allow null values Set as primary key Uses auto increment
 
-    // id
-
-    // Integer
-
-    // Doesn't allow null values
-
-    // Set as primary key
-
-    // Uses auto increment
-
+    tag_name: {
+      type: DataType.STRING,
+    }
     // tag_name
 
     // String
