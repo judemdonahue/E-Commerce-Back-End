@@ -21,10 +21,21 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
+  Category.findByPk(req.params.id, {
+    include: [
+      { model: Product }
+    ]
+  })
+  .then((categories) => res.json(categories))
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.post('/', (req, res) => {
   // create a new category
+  
 });
 
 router.put('/:id', (req, res) => {
