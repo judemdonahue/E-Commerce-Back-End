@@ -9,7 +9,7 @@ Tag.init(
     // define columns
 
     id: {
-      type: DataType.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
@@ -17,7 +17,7 @@ Tag.init(
     // id Integer Doesn't allow null values Set as primary key Uses auto increment
 
     tag_name: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
     }
     // tag_name
 

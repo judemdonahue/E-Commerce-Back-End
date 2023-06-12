@@ -18,13 +18,13 @@ Product.init(
     // id integer NOTNULL set as pk uses auto increment 
 
     product_name: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     // product_name string NOTNULL 
      
     price: {
-      type: DataType.DECIMAL,
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
         isDecimal: true
@@ -33,7 +33,7 @@ Product.init(
     // price DECIMAL NOTNULL validates value is a DECIMAL
 
     stock: {
-      type: DataType.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 10,
       validate: {
@@ -43,7 +43,7 @@ Product.init(
     // stock Integer Doesn't allow null values Set a default value of 10 Validates that the value is numeric
 
     category_id: {
-      type: DataType.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'category',
         key: 'id'
