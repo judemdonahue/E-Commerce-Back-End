@@ -53,22 +53,21 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create(req.body)
+    Product.create(req.body)
     .then((product) => {
-      // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-      if (req.body.tagIds.length) {
-        const productTagIdArr = req.body.tagIds.map((tag_id) => {
-          return {
-            product_id: product.id,
-            tag_id,
-          };
-        });
+      if (Array.isArray(req.body.tagIds) && req.body.tagIds.length) {
+        const productTagIdArr = req.body.tagIds.map((tag_id) => ({
+          product_id: product.id,
+          tag_id,
+        }));
         return ProductTag.bulkCreate(productTagIdArr);
+      } else {
+        return null; // Return a resolved promise to continue to the next `.then` block
       }
-      // if no product tags, just respond
-      res.status(200).json(product);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then(() => {
+      res.status(200).json({ message: 'Product Successfully Created!' });
+    })
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -112,7 +111,8 @@ router.put('/:id', (req, res) => {
         });
       }
 
-      return res.json(product);
+      return res.status(200).json({ message: 'Product Succesfully Updated!' });
+
     })
     .catch((err) => {
       // console.log(err);
@@ -132,7 +132,7 @@ router.delete('/:id', (req, res) => {
       res.status(404).json({ message: 'No product found with this id' });
       return;
     }
-    res.json(product);
+    return res.status(200).json({ message: 'Product Succesfully Deleted!' });
   })
   .catch((err) => {
     console.log(err);
