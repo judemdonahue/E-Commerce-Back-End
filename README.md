@@ -26,7 +26,8 @@ The development process provided valuable insights into working with Express.js,
 This application can't be deployed with a live link, so included in this README is a video which demonstrates the functionality of this application.
 
 ## Usage
-Video link here
+[E-Commerce-Backend-Demo.webm](https://github.com/judemdonahue/E-Commerce-Back-End/assets/122579098/c2743312-48e7-45bb-bfce-0d9740f55061)
+
 
 ## License
 This application is covered under the MIT License.
